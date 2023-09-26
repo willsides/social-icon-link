@@ -136,9 +136,6 @@ const DOMAIN_INFO = {
 };
 function getDomain(url) {
   try {
-    if (!url.match(/^http:\/\/|https:\/\//)) {
-      url = 'https://' + url;
-    }
     const urlObj = new URL(url);
     return urlObj.hostname.replace('www.', '');
   } catch (e) {
@@ -168,10 +165,15 @@ function Edit({
   } = attributes;
   function updateLink(newLink) {
     if (!newLink) return;
-    const {
+    let {
       url,
       openInNewTab
     } = newLink;
+    console.log(url);
+    if (!url.match(/^http:\/\/|https:\/\//)) {
+      url = 'https://' + url;
+    }
+    console.log(url);
     setAttributes({
       link: {
         url,
@@ -430,7 +432,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"willsides/social-icon-link","version":"0.1.0","title":"Social Icon Link","category":"widgets","icon":"admin-links","description":"Another block to add a logo that links to a social media account","example":{},"supports":{"html":false},"attributes":{"link":{"type":"object","default":"none"},"iconSlug":{"type":"string","default":"unset"},"siteName":{"type":"string"},"size":{"type":"integer","default":"100"},"colorScheme":{"type":"string","default":"color","enum":["color","light","dark"]}},"textdomain":"social-icon-link","editorScript":"file:./index.js","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"willsides/social-icon-link","version":"0.1.0","title":"Social Icon Link","category":"widgets","icon":"admin-links","description":"Another block to add a logo that links to a social media account","example":{},"supports":{"html":false,"align":["left","right","center"],"anchor":true,"color":{"background":true,"text":false,"link":false,"gradients":false},"customClassName":true,"filter":{"duotone":true},"selectors":{"filter":{"duotone":".wp-block-willsides-social-icon-link img"}},"spacing":{"margin":true,"padding":true}},"attributes":{"link":{"type":"object","default":"none"},"iconSlug":{"type":"string","default":"unset"},"siteName":{"type":"string"},"size":{"type":"integer","default":"100"},"colorScheme":{"type":"string","default":"color","enum":["color","light","dark"]},"align":{"type":"string","default":"center"}},"textdomain":"social-icon-link","editorScript":"file:./index.js","style":"file:./style-index.css"}');
 
 /***/ })
 

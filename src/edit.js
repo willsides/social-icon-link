@@ -53,10 +53,6 @@ const DOMAIN_INFO = {
 
 function getDomain(url) {
 	try {
-	if (!url.match(/^http:\/\/|https:\/\//)) {
-		url = 'https://' + url;
-	}
-
 	  const urlObj = new URL(url);
 	  return urlObj.hostname.replace('www.', '');
 	} catch (e) {
@@ -85,7 +81,13 @@ export default function Edit( { attributes, setAttributes } ) {
 	function updateLink(newLink) {
 		if (!newLink) return;
 		
-		const { url, openInNewTab } = newLink;
+		let { url, openInNewTab } = newLink;
+
+		console.log(url)
+		if (!url.match(/^http:\/\/|https:\/\//)) {
+			url = 'https://' + url;
+		}
+		console.log(url)
 
 		setAttributes({ link: { url, openInNewTab } });
 

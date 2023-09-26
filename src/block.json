@@ -9,7 +9,28 @@
 	"description": "Another block to add a logo that links to a social media account",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"align": [ "left", "right", "center" ],
+		"anchor": true,
+		"color": {
+			"background": true,
+			"text": false,
+			"link": false,
+			"gradients": false
+		},
+		"customClassName": true,
+		"filter": {
+			"duotone": true
+		},
+		"selectors": {
+			"filter": {
+				"duotone": ".wp-block-willsides-social-icon-link img"
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
 	},
 	"attributes": {
 		"link": {
@@ -31,6 +52,10 @@
 			"type": "string",
             "default": "color",
 			"enum":["color", "light", "dark"]
+		},
+		"align": {
+			"type": "string",
+			"default": "center"
 		}
 	},
 	"textdomain": "social-icon-link",
