@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "willsides/social-icon-link",
+	"version": "0.1.0",
+	"title": "Social Icon Link",
+	"category": "widgets",
+	"icon": "admin-links",
+	"description": "Another block to add a logo that links to a social media account",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"link": {
+			"type": "object",
+            "default": "none"
+		},
+		"iconSlug": {
+			"type": "string",
+			"default": "unset"
+		},
+		"siteName": {
+			"type": "string"
+		},
+		"size": {
+			"type": "integer",
+            "default": "100"
+		},
+		"colorScheme": {
+			"type": "string",
+            "default": "color",
+			"enum":["color", "light", "dark"]
+		}
+	},
+	"textdomain": "social-icon-link",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

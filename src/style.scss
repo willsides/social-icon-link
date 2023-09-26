@@ -1,0 +1,15 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-willsides-social-icon-link a, .wp-block-willsides-social-icon-link img {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+.wp-block-willsides-social-icon-link {
+	aspect-ratio: 1;
+}
