@@ -198,6 +198,11 @@ function Edit({
       });
     }
   }
+  const handleLinkClick = event => {
+    if (!event.ctrlKey) {
+      event.preventDefault();
+    }
+  };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(),
     style: {
@@ -252,10 +257,11 @@ function Edit({
     resetFallbackValue: 70
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: link.url,
-    title: siteName,
+    title: `${siteName} (Ctrl+Click to follow link)`,
     target: link.openInNewTab ? "_blank" : "_self",
     rel: link.openInNewTab ? "noopener noreferrer" : "noopener",
-    class: `ws-hover-opacity-${hoverOpacity}`
+    class: `ws-hover-opacity-${hoverOpacity}`,
+    onClick: handleLinkClick
   }, iconSlug == "unset" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("inline", null, "Enter a supported url...") : iconSlug == "invalid" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("inline", null, "Unsupported url...") : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: `${pluginInfo.path}assets/${colorScheme}/${iconSlug}-${colorScheme}.png`,
     alt: siteName

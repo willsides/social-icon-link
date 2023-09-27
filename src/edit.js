@@ -107,6 +107,12 @@ export default function Edit( { attributes, setAttributes } ) {
 		}
 	}
 
+	const handleLinkClick = (event) => {
+		if (!event.ctrlKey) {
+		  event.preventDefault();
+		}
+	};
+
 	return (
 		<div { ...useBlockProps() } style={{ height: `${size}px` }} >
 			<BlockControls>
@@ -163,10 +169,11 @@ export default function Edit( { attributes, setAttributes } ) {
             </InspectorControls>
 			<a 
 				href={ link.url } 
-				title={ siteName }
+				title={`${siteName } (Ctrl+Click to follow link)`}
 				target={ link.openInNewTab ? "_blank" : "_self" } 
 				rel={ link.openInNewTab ? "noopener noreferrer" : "noopener" }
 				class={`ws-hover-opacity-${hoverOpacity}`}
+				onClick={handleLinkClick}
 			>
 				{
 					(iconSlug == "unset") ? (
