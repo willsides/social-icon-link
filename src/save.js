@@ -22,6 +22,7 @@ export default function save({ attributes }) {
 		size, 
 		siteName,
 		colorScheme,
+		hoverOpacity,
 	} = attributes;
 
 	const blockProps = useBlockProps.save();
@@ -33,6 +34,7 @@ export default function save({ attributes }) {
 				title={ siteName }
 				target={ link.openInNewTab ? "_blank" : "_self" } 
 				rel={ link.openInNewTab ? "noopener noreferrer" : "noopener" }
+				class={`ws-hover-opacity-${hoverOpacity}`}
 			>
 				{ 
 					(iconSlug == "unset") ? (

@@ -15,7 +15,7 @@ import {
 	useBlockProps, 
 	__experimentalLinkControl as LinkControl,
 	BlockControls,
-	InspectorControls 
+	InspectorControls,
 } from '@wordpress/block-editor';
 
 import { 
@@ -76,6 +76,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		size, 
 		siteName,
 		colorScheme,
+		hoverOpacity,
 	} = attributes;
 
 	function updateLink(newLink) {
@@ -146,21 +147,37 @@ export default function Edit( { attributes, setAttributes } ) {
 					onChange={(value) => setAttributes({ size: value })}
 					min={25}
 					max={200}
+					allowReset={true}
+					resetFallbackValue={100}
 				/>
-                </InspectorControls>
+				<RangeControl
+					label="Hover Opacity %"
+					value={hoverOpacity}
+					onChange={(value) => setAttributes({ hoverOpacity: value })}
+					min={0}
+					max={100}
+					step={10}
+					allowReset={true}
+					resetFallbackValue={70}
+				/>
+            </InspectorControls>
 			<a 
 				href={ link.url } 
 				title={ siteName }
 				target={ link.openInNewTab ? "_blank" : "_self" } 
 				rel={ link.openInNewTab ? "noopener noreferrer" : "noopener" }
-			>				
-				{ 
+				class={`ws-hover-opacity-${hoverOpacity}`}
+			>
+				{
 					(iconSlug == "unset") ? (
 						<inline>Enter a supported url...</inline>
 					) : (iconSlug == "invalid") ? (
 						<inline>Unsupported url...</inline>
 					) :	(
-						<img src={`${pluginInfo.path}assets/${colorScheme}/${iconSlug}-${colorScheme}.png`} alt={siteName} />
+						<img 
+							src={`${pluginInfo.path}assets/${colorScheme}/${iconSlug}-${colorScheme}.png`}
+							alt={siteName}
+						/>
 					) 
 				}
 			</a>

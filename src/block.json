@@ -56,6 +56,10 @@
 		"align": {
 			"type": "string",
 			"default": "center"
+		},
+		"hoverOpacity": {
+		  "type": "integer",
+		  "default": "70"
 		}
 	},
 	"textdomain": "social-icon-link",

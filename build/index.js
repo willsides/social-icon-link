@@ -161,7 +161,8 @@ function Edit({
     iconSlug,
     size,
     siteName,
-    colorScheme
+    colorScheme,
+    hoverOpacity
   } = attributes;
   function updateLink(newLink) {
     if (!newLink) return;
@@ -235,12 +236,26 @@ function Edit({
       size: value
     }),
     min: 25,
-    max: 200
+    max: 200,
+    allowReset: true,
+    resetFallbackValue: 100
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: "Hover Opacity %",
+    value: hoverOpacity,
+    onChange: value => setAttributes({
+      hoverOpacity: value
+    }),
+    min: 0,
+    max: 100,
+    step: 10,
+    allowReset: true,
+    resetFallbackValue: 70
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: link.url,
     title: siteName,
     target: link.openInNewTab ? "_blank" : "_self",
-    rel: link.openInNewTab ? "noopener noreferrer" : "noopener"
+    rel: link.openInNewTab ? "noopener noreferrer" : "noopener",
+    class: `ws-hover-opacity-${hoverOpacity}`
   }, iconSlug == "unset" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("inline", null, "Enter a supported url...") : iconSlug == "invalid" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("inline", null, "Unsupported url...") : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: `${pluginInfo.path}assets/${colorScheme}/${iconSlug}-${colorScheme}.png`,
     alt: siteName
@@ -343,7 +358,8 @@ function save({
     iconSlug,
     size,
     siteName,
-    colorScheme
+    colorScheme,
+    hoverOpacity
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -355,7 +371,8 @@ function save({
     href: link.url,
     title: siteName,
     target: link.openInNewTab ? "_blank" : "_self",
-    rel: link.openInNewTab ? "noopener noreferrer" : "noopener"
+    rel: link.openInNewTab ? "noopener noreferrer" : "noopener",
+    class: `ws-hover-opacity-${hoverOpacity}`
   }, iconSlug == "unset" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", null) : iconSlug == "invalid" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", null) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: `${pluginInfo.path}assets/${colorScheme}/${iconSlug}-${colorScheme}.png`,
     alt: siteName
@@ -432,7 +449,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"willsides/social-icon-link","version":"0.1.0","title":"Social Icon Link","category":"widgets","icon":"admin-links","description":"Another block to add a logo that links to a social media account","example":{},"supports":{"html":false,"align":["left","right","center"],"anchor":true,"color":{"background":true,"text":false,"link":false,"gradients":false},"customClassName":true,"filter":{"duotone":true},"selectors":{"filter":{"duotone":".wp-block-willsides-social-icon-link img"}},"spacing":{"margin":true,"padding":true}},"attributes":{"link":{"type":"object","default":"none"},"iconSlug":{"type":"string","default":"unset"},"siteName":{"type":"string"},"size":{"type":"integer","default":"100"},"colorScheme":{"type":"string","default":"color","enum":["color","light","dark"]},"align":{"type":"string","default":"center"}},"textdomain":"social-icon-link","editorScript":"file:./index.js","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"willsides/social-icon-link","version":"0.1.0","title":"Social Icon Link","category":"widgets","icon":"admin-links","description":"Another block to add a logo that links to a social media account","example":{},"supports":{"html":false,"align":["left","right","center"],"anchor":true,"color":{"background":true,"text":false,"link":false,"gradients":false},"customClassName":true,"filter":{"duotone":true},"selectors":{"filter":{"duotone":".wp-block-willsides-social-icon-link img"}},"spacing":{"margin":true,"padding":true}},"attributes":{"link":{"type":"object","default":"none"},"iconSlug":{"type":"string","default":"unset"},"siteName":{"type":"string"},"size":{"type":"integer","default":"100"},"colorScheme":{"type":"string","default":"color","enum":["color","light","dark"]},"align":{"type":"string","default":"center"},"hoverOpacity":{"type":"integer","default":"70"}},"textdomain":"social-icon-link","editorScript":"file:./index.js","style":"file:./style-index.css"}');
 
 /***/ })
 
