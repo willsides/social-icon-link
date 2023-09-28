@@ -84,11 +84,9 @@ export default function Edit( { attributes, setAttributes } ) {
 		
 		let { url, openInNewTab } = newLink;
 
-		console.log(url)
 		if (!url.match(/^http:\/\/|https:\/\//)) {
 			url = 'https://' + url;
 		}
-		console.log(url)
 
 		setAttributes({ link: { url, openInNewTab } });
 
